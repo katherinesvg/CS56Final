@@ -9,7 +9,7 @@ Adding Products to Cart: A customer can add products to their shopping cart. The
 
 Checking Out: Once the customer has finished shopping, they can proceed to checkout. The total price of the products in the cart is calculated, and the amount is deducted from their balance.
 
-Playing Slots: The customer has the option to play a slot machine game. They guess a number between 1 and 25 and place a bet. If their guessed number matches the randomly generated number, they win double their bet amount; otherwise, they lose the bet.
+Playing Slots: The customer has the option to play a slot machine game. They guess a number between 1 and 10. If their guessed number matches the randomly generated number, they win double their guess amount.
 
 Money Management: The application allows the customer to manage their balance. They can add more money to their account and choose to bet money in the slot machine game. If they win, their balance is increased accordingly.
 
