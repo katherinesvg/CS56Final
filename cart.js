@@ -75,6 +75,59 @@ document.getElementById('checkoutButton').addEventListener('click', () => {
     window.location.href = "checkout.html";
 });
 
+function renderProducts(productsToRender) {
+    document.getElementById('root').innerHTML = productsToRender.map((item, i) => {
+        const { image, title, price } = item;
+        return `
+        <div class="box">
+                <div class="img-box">
+                    <img class="images" src="${image}" alt="${title}">
+                </div>
+                <div class="bottom">
+                    <p>${title}</p>
+                    <h2>$${price.toFixed(2)}</h2>
+                    <button onclick="addToCart(${i})">Add to Cart</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Sorting based on dropdown selection
+function handleDropdownChange(event) {
+    const selectedValue = event.target.value;
+    let filterdProducts;
+
+    switch (selectedValue) {
+        case "1": // All Products
+            filteredProducts = product;
+            break;
+        case "2": // Sandwich Breads
+            filteredProducts = product.filter(item =>
+                item.title.toLowerCase().includes('bread') ||
+                item.title.toLowerCase().includes('sourdough') ||
+                item.title.toLowerCase().includes('brioche')
+            );
+            break;
+        case "3": // Pastries
+            filteredProducts = product.filter(item =>
+                item.title.toLowerCase().includes('danish') ||
+                item.title.toLowerCase().includes('pain au chocolat')
+            );
+            break;
+        case "4": // French Bread
+            filteredProducts = product.filter(item =>
+                item.title.toLowerCase().includes('baguette') ||
+                item.title.toLowerCase().includes('croissant')
+            );
+            break;
+        default:
+            filteredProducts = product;
+    }
+    renderProducts(filteredProducts);
+}
+document.querySelector('.dropdown select').addEventListener('change', handleDropdownChange);
+renderProducts(product);
 
 function initializeSlotMachine() {
     const playButton = document.querySelector('.play');
